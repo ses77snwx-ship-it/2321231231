@@ -7,6 +7,7 @@ import { fade } from "@remotion/transitions/fade";
 import { IntroScene } from "./scenes/IntroScene";
 import { SpecsScene } from "./scenes/SpecsScene";
 import { OutroScene } from "./scenes/OutroScene";
+import { CarActionScene } from "./scenes/green/CarActionScene";
 
 type Props = {};
 
@@ -15,14 +16,19 @@ const calculateMetadata: CalculateMetadataFunction<Props> = () => {
 };
 
 const FPS = 30;
-const INTRO_DURATION = 95;
-const SPECS_DURATION = 150;
-const OUTRO_DURATION = 85;
+const INTRO_DURATION = 90;
+const ACTION_DURATION = 480;
+const SPECS_DURATION = 210;
+const OUTRO_DURATION = 165;
 const TRANSITION_DURATION = 15;
 
 export const MyComposition = () => {
   const totalDuration =
-    INTRO_DURATION + SPECS_DURATION + OUTRO_DURATION - TRANSITION_DURATION * 2;
+    INTRO_DURATION +
+    ACTION_DURATION +
+    SPECS_DURATION +
+    OUTRO_DURATION -
+    TRANSITION_DURATION * 3;
 
   return (
     <Composition
@@ -42,6 +48,13 @@ export const BmwM4Video: React.FC<Props> = () => {
     <TransitionSeries>
       <TransitionSeries.Sequence durationInFrames={INTRO_DURATION}>
         <IntroScene />
+      </TransitionSeries.Sequence>
+      <TransitionSeries.Transition
+        presentation={fade()}
+        timing={linearTiming({ durationInFrames: TRANSITION_DURATION })}
+      />
+      <TransitionSeries.Sequence durationInFrames={ACTION_DURATION}>
+        <CarActionScene />
       </TransitionSeries.Sequence>
       <TransitionSeries.Transition
         presentation={fade()}

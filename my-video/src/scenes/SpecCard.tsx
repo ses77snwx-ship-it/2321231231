@@ -1,5 +1,5 @@
 import { Easing, interpolate, useCurrentFrame } from "remotion";
-import { M_BLUE } from "./MStripe";
+import { GREEN_LIGHT } from "./green/palette";
 
 type Props = {
   readonly delay: number;
@@ -43,7 +43,7 @@ export const SpecCard: React.FC<Props> = ({ delay, value, unit, label }) => {
         }}
       >
         <span style={{ fontSize: 96, fontWeight: 800 }}>{value}</span>
-        <span style={{ fontSize: 34, fontWeight: 600, color: M_BLUE }}>
+        <span style={{ fontSize: 34, fontWeight: 600, color: GREEN_LIGHT }}>
           {unit}
         </span>
       </div>

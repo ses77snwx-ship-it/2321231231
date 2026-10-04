@@ -2,6 +2,7 @@ import { Easing, interpolate, useCurrentFrame } from "remotion";
 import { SpeedLines } from "./SpeedLines";
 import { MStripe } from "./MStripe";
 import { CarSilhouette } from "./CarSilhouette";
+import { GREEN_BODY, GREEN_LIGHT } from "./green/palette";
 
 export const IntroScene: React.FC = () => {
   const frame = useCurrentFrame();
@@ -101,7 +102,12 @@ export const IntroScene: React.FC = () => {
           translate: `0px ${carTranslate}px`,
         }}
       >
-        <CarSilhouette delay={35 + 0} width={620} />
+        <CarSilhouette
+          delay={35 + 0}
+          width={620}
+          fill={GREEN_BODY}
+          stroke={GREEN_LIGHT}
+        />
       </div>
     </div>
   );

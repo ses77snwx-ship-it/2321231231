@@ -1,6 +1,8 @@
 import { Easing, interpolate, useCurrentFrame } from "remotion";
 import { SpeedLines } from "./SpeedLines";
 import { MStripe } from "./MStripe";
+import { CarSilhouette } from "./CarSilhouette";
+import { GREEN_BODY, GREEN_LIGHT } from "./green/palette";
 
 export const OutroScene: React.FC = () => {
   const frame = useCurrentFrame();
@@ -72,6 +74,15 @@ export const OutroScene: React.FC = () => {
         }}
       >
         Pure Performance. Pure Emotion.
+      </div>
+
+      <div style={{ marginTop: 30, opacity: taglineOpacity }}>
+        <CarSilhouette
+          delay={34}
+          width={340}
+          fill={GREEN_BODY}
+          stroke={GREEN_LIGHT}
+        />
       </div>
     </div>
   );

@@ -13,9 +13,16 @@ const WINDOW_PATH =
 type Props = {
   readonly delay?: number;
   readonly width?: number;
+  readonly fill?: string;
+  readonly stroke?: string;
 };
 
-export const CarSilhouette: React.FC<Props> = ({ delay = 0, width = 760 }) => {
+export const CarSilhouette: React.FC<Props> = ({
+  delay = 0,
+  width = 760,
+  fill = "#e9e9ee",
+  stroke = "#ffffff",
+}) => {
   const frame = useCurrentFrame();
   const t = frame - delay;
 
@@ -46,9 +53,9 @@ export const CarSilhouette: React.FC<Props> = ({ delay = 0, width = 760 }) => {
     >
       <path
         d={CAR_PATH}
-        fill="#e9e9ee"
+        fill={fill}
         fillOpacity={fillOpacity}
-        stroke="#ffffff"
+        stroke={stroke}
         strokeWidth={4}
         strokeLinejoin="round"
         strokeDasharray={pathLength}

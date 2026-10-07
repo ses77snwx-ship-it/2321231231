@@ -1,5 +1,6 @@
 import { Easing, interpolate, useCurrentFrame } from "remotion";
 import { REEL_ORANGE } from "./palette";
+import { useUnit } from "./useUnit";
 
 export const SunburstSticker: React.FC<{ readonly size?: number }> = ({
   size = 110,
@@ -37,6 +38,7 @@ export const SunburstSticker: React.FC<{ readonly size?: number }> = ({
 
 export const TopCaption: React.FC = () => {
   const frame = useCurrentFrame();
+  const u = useUnit();
   const opacity = interpolate(frame, [0, 12], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
@@ -46,24 +48,24 @@ export const TopCaption: React.FC = () => {
     <div
       style={{
         position: "absolute",
-        top: 118,
-        left: 60,
-        right: 60,
+        top: 150 * u,
+        left: 70 * u,
+        right: 70 * u,
         display: "flex",
         alignItems: "center",
         gap: 4,
         opacity,
       }}
     >
-      <div style={{ marginLeft: -36 }}>
-        <SunburstSticker size={100} />
+      <div style={{ marginLeft: -36 * u }}>
+        <SunburstSticker size={130 * u} />
       </div>
       <div
         style={{
-          marginLeft: -30,
+          marginLeft: -24 * u,
           color: "#ffffff",
           fontFamily: "Helvetica, Arial, sans-serif",
-          fontSize: 32,
+          fontSize: 44 * u,
           fontWeight: 700,
           rotate: "-4deg",
           textShadow: "0 2px 10px rgba(0,0,0,0.5)",

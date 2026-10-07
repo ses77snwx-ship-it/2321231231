@@ -1,6 +1,7 @@
 import { interpolate, useCurrentFrame } from "remotion";
 import { ScreenChrome } from "../ScreenChrome";
 import { REEL_ORANGE } from "../palette";
+import { useUnit } from "../useUnit";
 
 const petalPath = (t: number) => {
   const points: string[] = [];
@@ -27,6 +28,7 @@ const BLOBS = [
 
 export const ShapeLiquidScreen: React.FC = () => {
   const frame = useCurrentFrame();
+  const u = useUnit();
   const t = frame / 20;
   const opacity = interpolate(frame, [0, 14], [0, 1], {
     extrapolateLeft: "clamp",
@@ -46,12 +48,12 @@ export const ShapeLiquidScreen: React.FC = () => {
           opacity,
         }}
       >
-        <svg width={220} height={220} viewBox="0 0 100 100">
+        <svg width={560 * u} height={560 * u} viewBox="0 0 100 100">
           <polygon
             points={petalPath(t)}
             fill="none"
             stroke="#1a1a1a"
-            strokeWidth={1.2}
+            strokeWidth={1.4}
           />
           {BLOBS.map((b, i) => (
             <circle

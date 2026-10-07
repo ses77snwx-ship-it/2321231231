@@ -2,7 +2,7 @@ import { Composition } from "remotion";
 import { ReelScene } from "./scenes/reel/ReelScene";
 
 const FPS = 30;
-const DURATION = 410;
+const DURATION = 425;
 
 export const ReelComposition = () => {
   return (
@@ -11,8 +11,8 @@ export const ReelComposition = () => {
       component={ReelScene}
       durationInFrames={DURATION}
       fps={FPS}
-      width={1080}
-      height={1920}
+      width={1620}
+      height={2880}
     />
   );
 };

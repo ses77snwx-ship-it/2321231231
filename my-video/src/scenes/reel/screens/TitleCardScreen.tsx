@@ -1,14 +1,16 @@
 import { Easing, interpolate, useCurrentFrame } from "remotion";
 import { ScreenChrome } from "../ScreenChrome";
 import { REEL_ORANGE } from "../palette";
+import { useUnit } from "../useUnit";
 
 export const TitleCardScreen: React.FC = () => {
   const frame = useCurrentFrame();
+  const u = useUnit();
   const opacity = interpolate(frame, [0, 12], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
-  const y = interpolate(frame, [0, 16], [20, 0], {
+  const y = interpolate(frame, [0, 16], [30, 0], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
     easing: Easing.bezier(0.16, 1, 0.3, 1),
@@ -26,15 +28,15 @@ export const TitleCardScreen: React.FC = () => {
           alignItems: "center",
           justifyContent: "center",
           opacity,
-          translate: `0px ${y}px`,
+          translate: `0px ${y * u}px`,
         }}
       >
         <div
           style={{
             color: "#0a0a0a",
-            fontSize: 56,
+            fontSize: 150 * u,
             fontWeight: 800,
-            letterSpacing: -1,
+            letterSpacing: -2,
           }}
         >
           CLAUDE.
@@ -42,9 +44,9 @@ export const TitleCardScreen: React.FC = () => {
         <div
           style={{
             color: "#1a1a1a",
-            fontSize: 20,
+            fontSize: 52 * u,
             fontStyle: "italic",
-            marginTop: 4,
+            marginTop: 8 * u,
           }}
         >
           motion designer

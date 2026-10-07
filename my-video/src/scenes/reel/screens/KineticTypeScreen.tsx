@@ -1,11 +1,13 @@
 import { Easing, interpolate, useCurrentFrame } from "remotion";
 import { ScreenChrome } from "../ScreenChrome";
 import { REEL_ORANGE } from "../palette";
+import { useUnit } from "../useUnit";
 
 const WORDS = ["BOLD", "FAST", "ALIVE"];
 
 export const KineticTypeScreen: React.FC = () => {
   const frame = useCurrentFrame();
+  const u = useUnit();
 
   const flashOpacity = interpolate(frame, [0, 4, 10], [1, 1, 0], {
     extrapolateLeft: "clamp",
@@ -51,7 +53,7 @@ export const KineticTypeScreen: React.FC = () => {
               style={{
                 position: "absolute",
                 color: "#121212",
-                fontSize: 54,
+                fontSize: 140 * u,
                 fontWeight: 800,
                 opacity,
                 scale,
